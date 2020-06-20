@@ -1,0 +1,5 @@
+name: FMCCitizens
+version: '1.0'
+main: hu.Pdani.FMCCitizens.FMCCitizensPlugin
+authors: [Pdani001]
+softdepend: [Skript,Citizens]
