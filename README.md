@@ -29,3 +29,5 @@
 - NPC is spawned:
   - `npc [with] id %-number% [is] spawned`
   - If the NPC with the given ID doesn't exists, or the given ID is null, this returns null
+- NPC skin change:
+  - `change npc skin [with] id %-number% to %-string%`
