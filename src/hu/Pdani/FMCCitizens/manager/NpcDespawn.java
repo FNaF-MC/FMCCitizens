@@ -12,7 +12,7 @@ import org.bukkit.event.Event;
 public class NpcDespawn extends Effect {
 
     static {
-        Skript.registerEffect(NpcDespawn.class,"despawn npc [with] id %number-%");
+        Skript.registerEffect(NpcDespawn.class,"despawn npc [with] id %-number%");
     }
 
     private Expression<Long> id;
@@ -26,7 +26,7 @@ public class NpcDespawn extends Effect {
 
     @Override
     public String toString(Event event, boolean b) {
-        return "despawn npc [with] id %number-%";
+        return "despawn npc [with] id %-number%";
     }
 
     @SuppressWarnings("unchecked")

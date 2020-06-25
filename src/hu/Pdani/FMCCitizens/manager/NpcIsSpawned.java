@@ -1,37 +1,47 @@
-package hu.Pdani.FMCCitizens.registry;
+package hu.Pdani.FMCCitizens.manager;
 
 import ch.njol.skript.Skript;
-import ch.njol.skript.lang.Effect;
+import ch.njol.skript.entity.EntityType;
 import ch.njol.skript.lang.Expression;
+import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
+import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
-import net.citizensnpcs.util.PlayerAnimation;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
-public class DeleteNpc extends Effect {
+public class NpcIsSpawned extends SimpleExpression<Boolean> {
 
     static {
-        Skript.registerEffect(DeleteNpc.class,"remove npc [with] id %-number%");
+        Skript.registerExpression(NpcIsSpawned.class,Boolean.class, ExpressionType.COMBINED,"npc [with] id %-number% [is] spawned");
     }
 
     private Expression<Long> id;
 
     @Override
-    protected void execute(Event e){
+    protected Boolean[] get(Event e) {
         if(id == null || id.getSingle(e) == null)
-            return;
+            return null;
         NPC target = CitizensAPI.getNPCRegistry().getById(id.getSingle(e).intValue());
         if(target == null)
-            return;
-        CitizensAPI.getNPCRegistry().deregister(target);
+            return null;
+        return new Boolean[]{target.isSpawned()};
+    }
+
+    @Override
+    public boolean isSingle() {
+        return true;
+    }
+
+    @Override
+    public Class<? extends Boolean> getReturnType() {
+        return Boolean.class;
     }
 
     @Override
     public String toString(Event event, boolean b) {
-        return "remove npc [with] id %-number%";
+        return "npc [with] id %-number% [is] spawned";
     }
 
     @SuppressWarnings("unchecked")

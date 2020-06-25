@@ -5,6 +5,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
+import hu.Pdani.FMCCitizens.FMCCitizensPlugin;
 import net.citizensnpcs.api.CitizensAPI;
 import org.bukkit.Location;
 import org.bukkit.event.Event;
@@ -12,7 +13,7 @@ import org.bukkit.event.Event;
 public class NpcSpawn extends Effect {
 
     static {
-        Skript.registerEffect(NpcSpawn.class,"spawn npc [with] id %number-% [at|with] location %location-%");
+        Skript.registerEffect(NpcSpawn.class,"spawn npc [with] id %-number% [at] location %-location%");
     }
 
     private Expression<Long> id;
@@ -29,7 +30,7 @@ public class NpcSpawn extends Effect {
 
     @Override
     public String toString(Event event, boolean b) {
-        return "spawn npc [with] id %number-% [at|with] location %location-%";
+        return "spawn npc [with] id %-number% [at] location %-location%";
     }
 
     @SuppressWarnings("unchecked")

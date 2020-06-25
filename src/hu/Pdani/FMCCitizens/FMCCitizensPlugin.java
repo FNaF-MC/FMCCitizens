@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Level;
 
 public class FMCCitizensPlugin extends JavaPlugin {
+    private static FMCCitizensPlugin plugin;
 
     @Override
     public void onEnable() {
@@ -22,7 +23,8 @@ public class FMCCitizensPlugin extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        SkriptAddon addon = Skript.registerAddon(this);
+        plugin = this;
+        SkriptAddon addon = Skript.registerAddon(plugin);
         try {
             addon.loadClasses("hu.Pdani.FMCCitizens", "registry");
             addon.loadClasses("hu.Pdani.FMCCitizens", "manager");
@@ -53,4 +55,7 @@ public class FMCCitizensPlugin extends JavaPlugin {
         return (pl instanceof Citizens);
     }
 
+    public static FMCCitizensPlugin getPlugin() {
+        return plugin;
+    }
 }
