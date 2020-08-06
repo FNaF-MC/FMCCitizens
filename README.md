@@ -3,6 +3,8 @@
 
 **_Created by Pdani001_**
 
+### This plugin will no longer receive updates! If you need it updated, feel free to create a fork, and/or a pull request.
+
 ### Current Skript additions:
 - NPC creator:
   - `[create] new npc [with] type %-entitytype% and name %-string%`
